@@ -94,13 +94,14 @@ exports.__esModule = true;
 exports.tree = exports.MyClass = exports.MySFC = void 0;
 /** @jsx predom */
 var renderer2_1 = require("./renderer2");
-exports.MySFC = function (props) { return renderer2_1.predom("p", null,
+var MySFC = function (props) { return renderer2_1.predom("p", null,
     props.x,
     " + ",
     props.y,
     " = ",
     props.x + props.y,
     _this.props.children); };
+exports.MySFC = MySFC;
 var MyClass = /** @class */ (function () {
     function MyClass(props) {
         this.props = props;
@@ -160,6 +161,4 @@ var _brokenTree = renderer_1.dom(component_1.MySFC, { x: 1, y: 2 },
     renderer_1.dom(component_1.MyClass, { x: 3, y: 4 }),
     renderer_1.dom(component_1.MyClass, { x: 5, y: 6 }));
 // Should fail, nondom isn't allowed as children of dom
-var _brokenTree2 = renderer_1.dom(DOMSFC, { x: 1, y: 2 },
-    component_1.tree,
-    component_1.tree);
+var _brokenTree2 = renderer_1.dom(DOMSFC, { x: 1, y: 2 }, component_1.tree, component_1.tree);
